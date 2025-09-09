@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MP Watches - Header</title>
+   <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+
+      <a href="#" class="logo">MP WATCHES</a>
+
+
+      <form class="search-bar" role="search">
+        <input type="text" placeholder="Search watches..." aria-label="Search" />
+        <button type="submit">Search</button>
+      </form>
+
+
+      <nav id="navMenu">
+        <a href="#">About us</a>
+        <a href="#">Collections</a>
+        <a href="#">Straps</a>
+        
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle">Watches</a>
+          <div class="dropdown-menu">
+            <a href="#">Men</a>
+            <a href="#">Women</a>
+            <a href="#">Automatic Dailler</a>
+            <a href="#">Straps</a>
+          </div>
+        </div>
+        <button class="cta-btn"><span>Shop Now</span></button>
+      </nav>
+
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+  </header>
+  <section class="img">
+     
+</section>
+<section>
+<div class="img-box">
+  <div class="box1">
+  <h1>Aqua Terra <br>in Turquoise</h1>
+  <p>Take an expressive approach to your <br> OMEGA style with our new Seamaster <br> models featuring vivid gradient dials and <br> ceramic bezels.</p>
+  <button class="btn2">Discove The Collection</button>
+</div>
+<div class="box2"></div>
+</div>
+
+</section>
+<section class="section">
+
+    <div class="left">
+      <img src="./Screenshot 2025-09-08 085241.png" alt="Model wearing Omega watch">
+    </div>
+
+
+    <div class="right">
+      <img src="./Screenshot 2025-09-08 085301.png" alt="Omega Watch" class="watch-img">
+      <div class="product-title">Speedmaster Moonwatch Professional</div>
+      <div class="product-details">42 mm, steel on steel</div>
+
+      <div class="headline">Aaron Taylor-Johnson Wears a Moonwatch</div>
+      <p class="description">
+        The British actor and OMEGA brand ambassador wears a Speedmaster Moonwatch 
+        with white dial. With its contrasting black details and glossy lacquered 
+        finish – it’s the ideal timepiece for a modern leading man.
+      </p>
+    </div>
+  </section>
+    <section class="section1">
+    <h2>Aqua Terra in Black</h2>
+    <p>
+      Presented in three sizes, this classic Seamaster collection is crafted 
+      with timeless black dials featuring a modern lacquered finish.
+    </p>
+  <button class="btn2">Discove The Collection</button>
+    
+  </section>
+  <section class="watch-section">
+   
+    <div class="watch-images">
+      <img src="./Screenshot 2025-09-08 094154.png" alt="Watch on hand">
+      <video autoplay muted loop>
+        <source src="./ssvid.net--Cinematic-Watch-Product-Video-Commercial-Example-Rolex-Timex-Omega.mp4" type="video/mp4">
+        
+      </video>
+    </div>
+
+   
+    <div class="watch-details">
+      <img src="./Screenshot 2025-09-08 094244.png" alt="Seamaster Watch">
+      <h3>SEAMASTER AQUA TERRA 150M</h3>
+      <p>41 mm, steel on steel</p>
+      <a href="#">Details</a>
+    </div>
+  </section>
+
+
+
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("navMenu");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
+    const dropdownToggle = document.querySelector(".dropdown-toggle");
+    const dropdown = document.querySelector(".dropdown");
+
+    dropdownToggle.addEventListener("click", function (e) {
+      if (window.innerWidth <= 576) {
+        e.preventDefault();
+        dropdown.classList.toggle("active");
+      }
+    });
+  </script>
+</body>
+</html>
