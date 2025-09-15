@@ -1,44 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Watch Straps</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MP Watches</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
   <style>
+    :root {
+      --brand: #cc0000;
+      --light: #fff;
+      --dark: #222;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: #fff;
-      color: #333;
+      background: #fdfdfd;
     }
 
+    /* ---------------- HEADER ---------------- */
     header {
-      padding: 20px;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      background: var(--light);
       border-bottom: 1px solid #ddd;
+      z-index: 1000;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 18px;
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 22px;
       font-weight: bold;
+      color: var(--brand);
+      text-decoration: none;
+      letter-spacing: 3px;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: #f1f1f1;
+      border-radius: 25px;
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+    }
+
+    .search-bar input {
+      border: none;
+      background: transparent;
+      outline: none;
+      padding: 8px 10px;
+      width: 160px;
+      font-size: 14px;
+    }
+
+    .search-bar button {
+      background: var(--brand);
+      border: none;
+      color: var(--light);
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .search-bar button:hover {
+      background: #990000;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      position: relative;
+    }
+
+    nav a {
+      position: relative;
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 6px 0;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: 0;
+      background: var(--brand);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--brand);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--light);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      display: none;
+      flex-direction: column;
+      min-width: 160px;
+      z-index: 1001;
+    }
+
+    .dropdown-menu a {
+      padding: 10px 15px;
+      color: var(--dark);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .dropdown-menu a:hover {
+      background: #f5f5f5;
+      color: var(--brand);
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: flex;
+    }
+
+    .cta-btn {
+      position: relative;
+      overflow: hidden;
+      background: var(--brand);
+      color: var(--light);
+      border: none;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .cta-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--dark);
+      border-radius: 2px;
+    }
+
+    /* ---------------- PRODUCTS ---------------- */
+    section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
     }
 
     .strap-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      padding: 20px;
     }
 
     .strap-card {
-      background: #fafafa;
+      background: #fff;
       border: 1px solid #eee;
       padding: 15px;
       text-align: center;
       border-radius: 8px;
-      position: relative;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .strap-card:hover {
@@ -50,11 +217,12 @@
       width: 100%;
       height: auto;
       margin-bottom: 10px;
+      border-radius: 6px;
     }
 
     .strap-card h3 {
-      margin: 8px 0 4px;
       font-size: 16px;
+      margin: 8px 0 4px;
     }
 
     .strap-card p {
@@ -62,30 +230,58 @@
       color: #555;
     }
 
-    .tag {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: black;
-      color: white;
-      font-size: 11px;
-      padding: 3px 6px;
-      border-radius: 4px;
+    /* ---------------- RESPONSIVE ---------------- */
+    @media (max-width: 992px) {
+      .search-bar input {
+        width: 120px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: var(--light);
+        padding: 20px;
+        border-top: 1px solid #ddd;
+        width: 100%;
+      }
+      nav.active {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .strap-container {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+      .strap-card h3 {
+        font-size: 14px;
+      }
+      .strap-card p {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .strap-container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-
-
+  <!-- ✅ Your Header -->
   <header>
     <div class="nav-container">
       <a href="#" class="logo">MP WATCHES</a>
-
       <form class="search-bar" role="search">
         <input type="text" placeholder="Search watches..." aria-label="Search" />
         <button type="submit">Search</button>
       </form>
-
       <nav id="navMenu">
         <a href="./index.html">About us</a>
         <div class="dropdown">
@@ -103,7 +299,7 @@
         <div class="dropdown">
           <a href="#" class="dropdown-toggle">Watches</a>
           <div class="dropdown-menu">
-            <a href="#">Best Seller</a>
+            <a href="./best.html">Best Seller</a>
             <a href="#">Men</a>
             <a href="#">Women</a>
             <a href="#">Automatic Dailler</a>
@@ -112,75 +308,73 @@
         </div>
         <button class="cta-btn"><span>Shop Now</span></button>
       </nav>
-
       <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </div>
     </div>
   </header>
 
-  
+  <!-- ✅ Products Section -->
   <section>
-    <h1>60 ITEMS</h1>
-    <main class="strap-container">
-
-<div class="strap-card"><span class="tag">BESTSELLER</span><img src="./straps1.jpg" alt="Strap 1"><h3>Two-Piece Strap</h3><p>Stainless steel mesh bracelet</p></div>
-    <div class="strap-card"><img src="./straps2.jpg" alt="Strap 2"><h3>Two-Piece Strap</h3><p>Durable rubber strap</p></div>
-    <div class="strap-card"><img src="./straps3.jpg" alt="Strap 3"><h3>Two-Piece Strap</h3><p>Premium leather strap</p></div>
-    <div class="strap-card"><img src="./straps4.jpg" alt="Strap 4"><h3>Two-Piece Strap</h3><p>NATO fabric strap</p></div>
-    <div class="strap-card"><img src="./straps5.jpg" alt="Strap 5"><h3>Two-Piece Strap</h3><p>Classic black strap</p></div>
-    <div class="strap-card"><img src="./straps6.jpg" alt="Strap 6"><h3>Two-Piece Strap</h3><p>Brown leather strap</p></div>
-    <div class="strap-card"><img src="./straps7.jpg" alt="Strap 7"><h3>Two-Piece Strap</h3><p>Blue rubber sports strap</p></div>
-    <div class="strap-card"><img src="./straps8.jpg" alt="Strap 8"><h3>Two-Piece Strap</h3><p>Canvas casual strap</p></div>
-    <div class="strap-card"><img src="./strap9.jpg" alt="Strap 9"><h3>Two-Piece Strap</h3><p>Textile adventure strap</p></div>
-    <div class="strap-card"><img src="./straps10.jpg" alt="Strap 10"><h3>Two-Piece Strap</h3><p>Sport edition strap</p></div>
-    <div class="strap-card"><img src="./straps11.jpg" alt="Strap 11"><h3>Two-Piece Strap</h3><p>Alligator leather strap</p></div>
-    <div class="strap-card"><img src="./straps12.jpg" alt="Strap 12"><h3>Two-Piece Strap</h3><p>Stainless steel bracelet</p></div>
-    <div class="strap-card"><img src="./straps13.jpg" alt="Strap 13"><h3>Two-Piece Strap</h3><p>Black NATO strap</p></div>
-    <div class="strap-card"><img src="./straps14.jpg" alt="Strap 14"><h3>Two-Piece Strap</h3><p>Red rubber strap</p></div>
-    <div class="strap-card"><img src="./straps15.jpg" alt="Strap 15"><h3>Two-Piece Strap</h3><p>Green canvas strap</p></div>
-    <div class="strap-card"><img src="./straps16.jpg" alt="Strap 16"><h3>Two-Piece Strap</h3><p>Black crocodile leather</p></div>
-    <div class="strap-card"><img src="./straps17.jpg" alt="Strap 17"><h3>Two-Piece Strap</h3><p>Grey NATO strap</p></div>
-    <div class="strap-card"><img src="./straps18.jpg" alt="Strap 18"><h3>Two-Piece Strap</h3><p>Rubber dive strap</p></div>
-    <div class="strap-card"><img src="./straps19.jpg" alt="Strap 19"><h3>Two-Piece Strap</h3><p>Classic brown strap</p></div>
-    <div class="strap-card"><img src="./straps20.jpg" alt="Strap 20"><h3>Two-Piece Strap</h3><p>Textured leather strap</p></div>
-    <div class="strap-card"><img src="./straps21.jpg" alt="Strap 21"><h3>Two-Piece Strap</h3><p>Yellow fabric strap</p></div>
-    <div class="strap-card"><img src="./straps22.jpg" alt="Strap 22"><h3>Two-Piece Strap</h3><p>Suede leather strap</p></div>
-    <div class="strap-card"><img src="./straps23.jpg" alt="Strap 23"><h3>Two-Piece Strap</h3><p>Black stitched strap</p></div>
-    <div class="strap-card"><img src="./straps24.jpg" alt="Strap 24"><h3>Two-Piece Strap</h3><p>Luxury edition strap</p></div>
-    <div class="strap-card"><img src="./straps25.jpg" alt="Strap 25"><h3>Two-Piece Strap</h3><p>Soft silicone strap</p></div>
-    <div class="strap-card"><img src="./straps26.jpg" alt="Strap 26"><h3>Two-Piece Strap</h3><p>Black leather strap</p></div>
-    <div class="strap-card"><img src="./straps27.jpg" alt="Strap 27"><h3>Two-Piece Strap</h3><p>White rubber strap</p></div>
-    <div class="strap-card"><img src="./straps28.jpg" alt="Strap 28"><h3>Two-Piece Strap</h3><p>Orange NATO strap</p></div>
-    <div class="strap-card"><img src="./straps29.jpg" alt="Strap 29"><h3>Two-Piece Strap</h3><p>Dark blue leather strap</p></div>
-    <div class="strap-card"><img src="./straps30.jpg" alt="Strap 30"><h3>Two-Piece Strap</h3><p>Carbon fiber style strap</p></div>
-
- 
-
-      
-    </main>
+    <h2 style="text-align:center; margin-bottom:20px;">Our 30 Straps Collection</h2>
+    <div class="strap-container">
+      <!-- Loop 30 Products -->
+      <!-- Example variations in AOS effect -->
+      <div class="strap-card" data-aos="fade-up"><img src="./straps1.jpg" alt="Strap 1"><h3>Strap 1</h3><p>Premium Leather</p></div>
+      <div class="strap-card" data-aos="fade-right"><img src="./straps2.jpg" alt="Strap 2"><h3>Strap 2</h3><p>Stainless Steel Mesh</p></div>
+      <div class="strap-card" data-aos="zoom-in"><img src="./straps3.jpg" alt="Strap 3"><h3>Strap 3</h3><p>Durable Rubber</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps4.jpg" alt="Strap 4"><h3>Strap 4</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps5.jpg" alt="Strap 5"><h3>Strap 5</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps6.jpg" alt="Strap 6"><h3>Strap 6</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps7.jpg" alt="Strap 7"><h3>Strap 7</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps8.jpg" alt="Strap 8"><h3>Strap 8</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps9.jpg" alt="Strap 9"><h3>Strap 9</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps10.jpg" alt="Strap 10"><h3>Strap 10</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps11.jpg" alt="Strap 11"><h3>Strap 11</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps12.jpg" alt="Strap 12"><h3>Strap 12</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps13.jpg" alt="Strap 13"><h3>Strap 13</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps14.jpg" alt="Strap 4"><h3>Strap 14</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps15.jpg" alt="Strap 4"><h3>Strap 15</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps16.jpg" alt="Strap 4"><h3>Strap 16</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps17.jpg" alt="Strap 4"><h3>Strap 17</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps18.jpg" alt="Strap 4"><h3>Strap 18</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps19.jpg" alt="Strap 4"><h3>Strap 19</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps20.jpg" alt="Strap 4"><h3>Strap 20</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps21.jpg" alt="Strap 4"><h3>Strap 21</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps22.jpg" alt="Strap 4"><h3>Strap 22</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps23.jpg" alt="Strap 4"><h3>Strap 23</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps24.jpg" alt="Strap 4"><h3>Strap 24</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps25.jpg" alt="Strap 4"><h3>Strap 25</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps26.jpg" alt="Strap 4"><h3>Strap 26</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps27.jpg" alt="Strap 4"><h3>Strap 27</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps28.jpg" alt="Strap 4"><h3>Strap 28</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps29.jpg" alt="Strap 4"><h3>Strap 29</h3><p>Nylon Fabric</p></div>
+      <div class="strap-card" data-aos="fade-left"><img src="./straps30.jpg" alt="Strap 4"><h3>Strap 30</h3><p>Nylon Fabric</p></div>
+    </div>
   </section>
 
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    AOS.init({ duration: 1000, once: true });
+
+    // Hamburger toggle
     const hamburger = document.getElementById("hamburger");
     const navMenu = document.getElementById("navMenu");
-
     hamburger.addEventListener("click", () => {
       navMenu.classList.toggle("active");
     });
 
+    // Dropdown on mobile
     const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
     dropdownToggles.forEach(toggle => {
-      toggle.addEventListener("click", function (e) {
-        if (window.innerWidth <= 576) {
+      toggle.addEventListener("click", function(e) {
+        if (window.innerWidth <= 768) {
           e.preventDefault();
           this.parentElement.classList.toggle("active");
         }
       });
     });
   </script>
-
 </body>
 </html>
