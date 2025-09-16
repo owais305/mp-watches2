@@ -575,7 +575,7 @@ footer {
       }
     }
 
-    /* Small tablets */
+    
     @media (max-width: 768px) {
       .newsletter {
         flex-direction: column;

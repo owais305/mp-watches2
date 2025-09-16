@@ -6,7 +6,7 @@
   <title>MP Watches</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
-  <!-- AOS Library -->
+ 
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
   <style>
@@ -27,7 +27,7 @@
       background: #fdfdfd;
     }
 
-    /* ---------------- HEADER ---------------- */
+    
     header {
       width: 100%;
       position: sticky;
@@ -186,7 +186,7 @@
       border-radius: 2px;
     }
 
-    /* ---------------- PRODUCTS ---------------- */
+
     section {
       padding: 40px 20px;
       max-width: 1200px;
@@ -230,7 +230,7 @@
       color: #555;
     }
 
-    /* ---------------- RESPONSIVE ---------------- */
+    
     @media (max-width: 992px) {
       .search-bar input {
         width: 120px;
@@ -274,7 +274,7 @@
   </style>
 </head>
 <body>
-  <!-- ✅ Your Header -->
+  
   <header>
     <div class="nav-container">
       <a href="#" class="logo">MP WATCHES</a>
@@ -283,7 +283,7 @@
         <button type="submit">Search</button>
       </form>
       <nav id="navMenu">
-        <a href="./index.html">About us</a>
+        <a href="./index.html">Home</a>
         <div class="dropdown">
           <a href="#" class="dropdown-toggle">Collection</a>
           <div class="dropdown-menu">
@@ -300,9 +300,9 @@
           <a href="#" class="dropdown-toggle">Watches</a>
           <div class="dropdown-menu">
             <a href="./best.html">Best Seller</a>
-            <a href="#">Men</a>
+            <a href="./mens.html">Men</a>
             <a href="#">Women</a>
-            <a href="#">Automatic Dailler</a>
+            
             <a href="#">Couple Watches</a>
           </div>
         </div>
@@ -314,12 +314,11 @@
     </div>
   </header>
 
-  <!-- ✅ Products Section -->
+ 
   <section>
     <h2 style="text-align:center; margin-bottom:20px;">Our 30 Straps Collection</h2>
     <div class="strap-container">
-      <!-- Loop 30 Products -->
-      <!-- Example variations in AOS effect -->
+
       <div class="strap-card" data-aos="fade-up"><img src="./straps1.jpg" alt="Strap 1"><h3>Strap 1</h3><p>Premium Leather</p></div>
       <div class="strap-card" data-aos="fade-right"><img src="./straps2.jpg" alt="Strap 2"><h3>Strap 2</h3><p>Stainless Steel Mesh</p></div>
       <div class="strap-card" data-aos="zoom-in"><img src="./straps3.jpg" alt="Strap 3"><h3>Strap 3</h3><p>Durable Rubber</p></div>
@@ -353,19 +352,18 @@
     </div>
   </section>
 
-  <!-- AOS Script -->
+ 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, once: true });
 
-    // Hamburger toggle
     const hamburger = document.getElementById("hamburger");
     const navMenu = document.getElementById("navMenu");
     hamburger.addEventListener("click", () => {
       navMenu.classList.toggle("active");
     });
 
-    // Dropdown on mobile
+ 
     const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
     dropdownToggles.forEach(toggle => {
       toggle.addEventListener("click", function(e) {
